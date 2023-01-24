@@ -12,10 +12,25 @@
     <title>Weather Dashboard</title>
 </head>
 
-<body>
-        <h1>Weather Dashboard</h1>
 
-    </main>
+<body>
+    <h1>Weather Dashboard</h1>
+        <main class="container-fluid">
+            <form id = "citySearch">
+                <h2>Search City</h2>
+                <input id="city" placeholder="Search City"/>
+                <button type="submit">Search</button>
+            </form>
+
+            <div id ="previousSearch"></div>
+
+            <div id ="weatherForecast"></div>
+
+            <div id="searchForCity"></div>
+
+        
+
+        </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
