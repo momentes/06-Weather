@@ -1,10 +1,13 @@
 
 
-const cityAppend=document.querySelector("#citySearch");
-const cityInput=document.querySelector("#city");
+const cityAppend = document.querySelector("#citySearch");
+const cityInput = document.querySelector("#city");
 const citySearchInput = document.querySelector("#searchForCity");
 
+
 const previousSearchAppend = document.querySelector("#previousSearch");
+
+const weatherContent = document.querySelector("#weatherDashboard")
 
 const cities = [];
 
@@ -27,19 +30,27 @@ let saveSearch = function(){
 };
 
 
+//Current Weather Dashboard
 const displayWeather = function(weather, searchForCity){
 
+    // weatherContent.textContent = " "; 
+    // citySearchInput.textContent = searchForCity;
 
-    citySearchInput.textContent=searchForCity;
-
-    var currentDate = document.createElement("span")
-    currentDate.textContent=" (" + moment(weather.dt.value).format("MMM D, YYYY") + ") ";
+    //create data 
+    let currentDate = document.createElement("span")
+    currentDate.textContent =" (" + moment(weather.dt.value).format("MMM D, YYYY") + ") ";
     citySearchInput.appendChild(currentDate);
  
-    //create an image element
-    var weatherIcon = document.createElement("img")
-    weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
+    //create an weather icon
+    let weatherIcon = document.createElement("img")
+    weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${weatherDaily.weather[0].icon}@2x.png`);
     citySearchInput.appendChild(weatherIcon);
  
+    //append card
+    let temperature = document.createElement("span");
+    temperature.textContent = "Temperature: " + weather.main.temp + " °C";
+    temperature.classList = "listItem"
+
+    
 
 }
