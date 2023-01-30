@@ -29,15 +29,17 @@
             <div class = "past-search border" id = "previousSearches"></div>
             <button class = "btn btn-primary" id = "clearHistory" type = "submit">Clear History</button>
 
-            <div id ="weatherForecast"></div>
+            <div class = "row border" id = "currentCast">
+                <div class = "col-12">
+                    <h2 id="searchDisplay"></h2>
+                    <div id = "currentCastDashboard" class = "list-group-item"></div>
 
-            <div class = "col-10">
-                <h2 id="searchedCity"></h2>
-                <div id="weatherDashboard" class = "list-group"></div>
-            </div>
+                    <div class = "row border" id = "forecast">
+                        <h2 class= "col-12" id = "forecastHeader"> </h2>
+                        <div class = "d-flex" id = "forecastList"></div>
+                </div>  
 
-        
-        
+    
         </div>
         </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
