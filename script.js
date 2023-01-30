@@ -11,77 +11,92 @@ const currentCastDashboard=document.getElementById("currentCastDashboard");
 
 const forecastHeader = document.getElementById("forecastHeader");
 
-
-var cities = [];
-
-
-var getSearchCityWeather = function(city){
-    var apiKey = "523b55d0fba1e533fc90809576b9db58"
-    var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
-
-    fetch(apiURL)
-    .then(function(response){
-        response.json().then(function(data){
-            displayWeather(data, city);
-        });
-    });
-};
+const clearHistory = document.getElementById("clearHistory");
 
 
-var formSumbitHandler = function(event){
-    event.preventDefault();
-    var city = cityInput.value.trim();
-    if(city){
-        geSearchCityWeather(city);
-        cityInput.value = "";
-    } else{
-       placeholder("Please enter a City");
-    }
-    saveSearch();
-    pastSearch(city);
-}
+// function toAllCaps(str){
+//     return str.toUpperCase();
+// }
+
+// function toTitleCase(str) {
+//     return str.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+// } 
 
 
-
-var saveSearch = function(){
+const saveSearch = function(){
     localStorage.setItem("cities", JSON.stringify(cities));
 };
 
 
-//Current Weather Dashboard
-var displayWeather = function(weather, previousCity){
+clearHistory.addEventListener("click", function(){
+    localStorage.removeItem("cities");
+    previousSearches.textContent = "";
+});
 
-    weatherContent.textContent = " "; 
-    cityPreviousSearch.textContent = previousCity;
 
-    //create data 
-    var currentDate = document.createElement("span")
-    currentDate.textContent =" (" + moment(weather.dt.value).format("MMM D, YYYY") + ") ";
-    citySearchInput.appendChild(currentDate);
+  
+const getCurrentCast = function(city, country){
+    let apiKey = "523b55d0fba1e533fc90809576b9db58"
+    let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${apiKey}`
  
-    //create an weather icon
-    var weatherIcon = document.createElement("img")
-    weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${weatherDaily.weather[0].icon}@2x.png`);
-    citySearchInput.appendChild(weatherIcon);
+     fetch(apiURL)
+     .then(function(response){
+         response.json().then(function(data){
+             currectCastDirectory(data, city);
+         });
+     });
+ };
+
+
+
+ const currectCastDirectory = function(weather, currentCity){
+    
+    //Clear Search
+    currentCastDashboard.textContent= "";  
+    searchDisplay.textContent = toTitleCase(currentCity);
+    
+    //Create Header Element 
+    let country = document.createElement("span")
+    country.textContent = ", " + weather.sys.country;
  
-    //weather data with span element
-    var temperature = document.createElement("span");
+    let currentDate = document.createElement("span")
+    currentDate.textContent=" (" + moment(weather.dt.value).format("MMMM D, YYYY") + ") ";
+ 
+    let weatherIcon = document.createElement("img")
+    weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
+ 
+    //Create Description Element
+    let description = document.createElement("span");
+    description.textContent = "Description: " + toTitleCase(weather.weather[0].description);
+    description.classList = "list-group-item"
+ 
+    let temperatureFeels = document.createElement("span");
+    temperatureFeels.textContent = "Feels Like: " + weather.main.feels_like + " °C";
+    temperatureFeels.classList = "list-group-item"
+ 
+    let temperature = document.createElement("span");
     temperature.textContent = "Temperature: " + weather.main.temp + " °C";
-    temperature.classList = "list"
-
-    var wind = document.createElement("span");
-    wind.textContent = "Wind Speed: " + weather.wind.speed + " MPH";
-    wind.classList = "list"
-
-    var humidity = document.createElement("span");
+    temperature.classList = "list-group-item"
+   
+    let humidity = document.createElement("span");
     humidity.textContent = "Humidity: " + weather.main.humidity + " %";
-    humidity.classList = "list"
-
-    weatherContent.appendChild(temperature);
-    weatherContent.appendChild(wind);
-    weatherContent.appendChild(humidity);
-
-}
-
-
-cityAppend.addEventListener("submit", formSumbitHandler);
+    humidity.classList = "list-group-item"
+ 
+    let windSpeed = document.createElement("span");
+    windSpeed.textContent = "Wind Speed: " + weather.wind.speed + " MPH";
+    windSpeed.classList = "list-group-item"
+ 
+    //Append Header Element
+    searchDisplay.appendChild(country);
+    searchDisplay.appendChild(currentDate);
+    searchDisplay.appendChild(weatherIcon);
+ 
+    //Append Description Element
+    currentCastDashboard.appendChild(description);
+    currentCastDashboard.appendChild(temperatureFeels);
+    currentCastDashboard.appendChild(temperature);
+    currentCastDashboard.appendChild(humidity);
+    currentCastDashboard.appendChild(windSpeed);
+  
+ }
+ 
