@@ -34,7 +34,31 @@ clearHistory.addEventListener("click", function(){
 });
 
 
-  
+const formSumbitHandler = function(event){
+    event.preventDefault();
+    const cityCountry = searchInput.value.trim();
+    if(cityCountry){
+        const cityCountryArray = cityCountry.split(',');
+        const city = cityCountryArray[0].trim();
+        const country = cityCountryArray[1] ? cityCountryArray[1].trim() : '';
+        if (country) {
+          getCurrentCast(city, country);
+          getForecast(city, country);
+          cities.unshift({city, country});
+        } else {
+          getCurrentCast(city);
+          getForecast(city);
+          cities.unshift({city});
+        }
+        searchInput.value = "";
+        saveSearch();
+        previousSearch(city, country);
+    } else{
+        searchInput.placeholder = "Please enter a city, country";
+    }
+}
+
+
 const getCurrentCast = function(city, country){
     let apiKey = "523b55d0fba1e533fc90809576b9db58"
     let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${apiKey}`
@@ -46,7 +70,6 @@ const getCurrentCast = function(city, country){
          });
      });
  };
-
 
 
  const currectCastDirectory = function(weather, currentCity){
@@ -100,3 +123,6 @@ const getCurrentCast = function(city, country){
   
  }
  
+
+citySearch.addEventListener("submit", formSumbitHandler);
+previousSearches.addEventListener("click", pastSearchHandler);
