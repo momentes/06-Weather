@@ -12,38 +12,37 @@
     <title>Weather Dashboard</title>
 </head>
 
-
 <body>
-    <header class = "text-blue text-center p-3">
-    <h1>Weather Dashboard</h1>
+    <header class = "text-center p-3">
+        <h1>Weather Dashboard</h1>
     </header>
-        <main class="container-fluid">
+    <main class="container-fluid">
         <div class = "row">
-          <div class="col-11 col-md-3 p-5">
-            <form class = "border p-5" id = "citySearch">
-                <h2>Search City</h2>
-                <input id="searchInput" type = "text" autofocus = "true" class = "form-input" placeholder = "Search City"/>
-                <button type="submit">Search</button>
-            </form>
+            <div class="col-12 col-md-3 p-6 searchColumn">
+                    <form class = "border p-6" id = "citySearch">
+                        <h2>Search City</h2>
+                        <input id="searchInput" type = "text" autofocus = "true" class = "form-input" placeholder = "Search City"/>
+                        <button class = "btn btn-primary" type = "submit">Search</button>
+                    </form>
+                <div>Search History</div>
+                <div class = "past-search border" id = "previousSearches"></div>
+                <button class = "btn btn-primary" id = "clearHistory" type = "submit">Clear History</button>
+            </div>
+            <div class="col-12 col-md-9">
 
-            <div>Search History</div>
-
-            <div class = "past-search border" id = "previousSearches"></div>
-            <button class = "btn btn-primary" id = "clearHistory" type = "submit">Clear History</button>
-
-            <div class = "row border" id = "currentCast">
+             <div class = "row border" id = "currentCast">
                 <div class = "col-12">
                     <h2 id="searchDisplay"></h2>
                     <div id = "currentCastDashboard" class = "list-group-item"></div>
-
-                    <div class = "row border" id = "forecast">
+                </div>  
+             </div>  
+                <div class = "row border" id = "forecast">
                         <h2 class= "col-12" id = "forecastHeader"> </h2>
                         <div class = "d-flex" id = "forecastList"></div>
                 </div>  
-
-    
+            </div> 
         </div>
-        </main>
+    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
