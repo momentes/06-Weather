@@ -1,9 +1,13 @@
-
-span {
-padding: 4px;
+.searchColumn{
+    background-color:	#D3D3D3;
 }
 
-.list {
-font-size: medium;
+.list-group-item{
+    border:0px;
+    line-height:5px;
+}
+
+.card-body{
+    flex:auto
 }
 
