@@ -15,11 +15,12 @@ This assignment is is to build a weather dashboard that will run in the browser 
 - WHEN I click on a city in the search history
 - THEN I am again presented with current and future conditions for that city
 
+**Deployment:**
+1. Website ; https://momentes.github.io/06-Weather-Dashboard/
 
-**Creator Note:**
-1. Incomplete, will have to do complete it soon this week. Unwell the last 2 weeks after gruelling group work
-2. Sorry. 
-
+**Screenshot**
+How my website looks like
+<img src="images/WeatherDashboard.png" width=65%>
 
 **Credits for References & Learning Resources:**
 1. Website Credits - W3schools
