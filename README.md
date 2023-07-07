@@ -3,8 +3,7 @@ Bootcamp Module 06 Challenge - Weather Dashboard
 
 This assignment is is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CS while retrieving data from another application's API and using it in the context of their own.
 
-
-**The acceptance criteria is as follow :**
+# The acceptance criteria is as follow :**
 - GIVEN a weather dashboard with form inputs
 - WHEN I search for a city
 - THEN I am presented with current and future conditions for that city and that city is added to the search history
@@ -15,14 +14,14 @@ This assignment is is to build a weather dashboard that will run in the browser 
 - WHEN I click on a city in the search history
 - THEN I am again presented with current and future conditions for that city
 
-**Deployment:**
+# Deployment:
 1. Website ; https://momentes.github.io/06-Weather-Dashboard/
 
-**Screenshot**
+# Screenshot
 How my website looks like
 <img src="images/WeatherDashboard.png" width=65%>
 
-**Credits for References & Learning Resources:**
+# Credits for References & Learning Resources:
 1. Website Credits - W3schools
 2. Website Credits - StackOverFlow
 3. Website Credits - Markdownguide.org
