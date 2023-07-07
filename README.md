@@ -18,7 +18,8 @@ This assignment is is to build a weather dashboard that will run in the browser 
 1. Website ; https://momentes.github.io/06-Weather-Dashboard/
 
 # Screenshot
-How my website looks like
+How my website looks like.
+
 <img src="images/WeatherDashboard.png" width=65%>
 
 # Credits for References & Learning Resources:
